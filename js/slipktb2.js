@@ -8,10 +8,12 @@ function loadFonts() {
         new FontFace('SFThonburiBold', 'url(assets/fonts/SFThonburi-Bold.woff)'),
     ];
 
-    // โหลดฟอนต์ทั้งหมดและเพิ่มเข้าไปที่ document
-    return Promise.all(fonts.map(font => font.load())).then(function(loadedFonts) {
-        loadedFonts.forEach(function(font) {
-            document.fonts.add(font);
+    // โหลดฟอนต์ทั้งหมดและเพิ่มเข้าไปที่ document (แก้เป็น allSettled เพื่อกันบั๊กฟอนต์ตาย)
+    return Promise.allSettled(fonts.map(font => font.load())).then(function(results) {
+        results.forEach(function(result) {
+            if (result.status === 'fulfilled') {
+                document.fonts.add(result.value);
+            }
         });
     });
 }
@@ -27,21 +29,22 @@ window.onload = function() {
     });
 };
 
-
 function setCurrentDateTime() {
     const now = new Date();
     const localDateTime = now.toLocaleString('sv-SE', { timeZone: 'Asia/Bangkok', hour12: false });
     
     const formattedDateTime = localDateTime.substring(0, 16); // ตัดส่วนวินาทีออก
-    document.getElementById('datetime').value = formattedDateTime;
+    const dt = document.getElementById('datetime');
+    if (dt) dt.value = formattedDateTime;
     
     const oneMinuteLater = new Date(now.getTime() + 0); // เพิ่ม 1 นาที (60,000 มิลลิวินาที)
     const hours = oneMinuteLater.getHours().toString().padStart(2, '0');
     const minutes = oneMinuteLater.getMinutes().toString().padStart(2, '0');
     const formattedTimePlusOne = `${hours}:${minutes}`;
-    document.getElementById('datetime_plus_one').value = formattedTimePlusOne;
+    
+    const dtPlus = document.getElementById('datetime_plus_one');
+    if (dtPlus) dtPlus.value = formattedTimePlusOne;
 }
-
 
 function padZero(number) {
     return number < 10 ? '0' + number : number;
@@ -58,7 +61,6 @@ function formatDateWithDay(date) {
     return `${dayName}ที่ ${day} ${month}`;
 }
 
-
 function formatDate(date) {
     const day = padZero(new Date(date).getDate());
     const month = padZero(new Date(date).getMonth() + 1);
@@ -66,11 +68,8 @@ function formatDate(date) {
     return `${day}/${month}/${year}`;
 }
 
-
-
 let qrCodeImage = null;
 let powerSavingMode = false;
-
 
 function handlePaste(event) {
     const items = event.clipboardData.items;
@@ -91,21 +90,20 @@ function handlePaste(event) {
     }
 }
 
-function updateDisplay() {
-    const datetime = document.getElementById('datetime').value || '-';
-    const datetimePlusOne = document.getElementById('datetime_plus_one').value || '-';
-    const money01 = document.getElementById('money01').value || '-';
-    const money02 = document.getElementById('money02').value || '-';
+window.updateDisplay = function() {
+    const datetime = document.getElementById('datetime')?.value || '-';
+    const datetimePlusOne = document.getElementById('datetime_plus_one')?.value || '-';
+    const money01 = document.getElementById('money01')?.value || '-';
+    const money02 = document.getElementById('money02')?.value || '-';
 
     const formattedDate = formatDate(datetime.substring(0, 10)); 
     const formattedDateWithDay = formatDateWithDay(datetime.substring(0, 10)); 
     const formattedTime = datetime.substring(11, 16); 
-    const formattedTimePlusOne = datetimePlusOne; 
-
+    const formattedTimePlusOne = datetimePlusOne;
 
     let timeDifference = Math.floor((new Date(`1970-01-01T${datetimePlusOne}:00Z`) - new Date(`1970-01-01T${formattedTime}:00Z`)) / 60000);
     let timeMessage = "";
-    
+
     if (timeDifference > 1) {
         timeMessage = `${timeDifference} นาทีที่แล้ว`;
     } else if (timeDifference === 1) {
@@ -114,27 +112,22 @@ function updateDisplay() {
         timeMessage = "ตอนนี้";
     }
     
-
-
-    
-    const senderaccount = document.getElementById('senderaccount').value || '-';
-    const bank1 = document.getElementById('bank1').value || '-';
-    const receiveraccount = document.getElementById('receiveraccount').value || '-';
-    const receivername = document.getElementById('receivername').value || '-';
-
-
-    
-  
+    const senderaccount = document.getElementById('senderaccount')?.value || '-';
+    const bank1 = document.getElementById('bank1')?.value || '-';
+    const receiveraccount = document.getElementById('receiveraccount')?.value || '-';
+    const receivername = document.getElementById('receivername')?.value || '-';
 
     const canvas = document.getElementById('canvas');
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
     const backgroundImage = new Image();
-    backgroundImage.src = '../assets/image/bs/backgroundEnter-KT3.6.jpg';
+    // ✅ จุดที่ 1: แก้ Path เอากลุ่มคำว่า ../ ออก เพื่อให้หาไฟล์รูปเจอและวาดขึ้น
+    backgroundImage.src = 'assets/image/bs/backgroundEnter-KT3.6.jpg';
+    
     backgroundImage.onload = function() {
         // Clear the canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
         ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
 
         drawText(ctx, `เงินเข้า`, 131.5,85,30, 'SFThonburiRegular', '#596163', 'left', 1.5, 3, 0, 0, 1250,0);
@@ -147,24 +140,17 @@ function updateDisplay() {
         drawText(ctx, `บาท`, 669, 85, 30, 'SFThonburiRegular', '#596163', 'right', 40, 3, 0, 0, 1250, 0);
         const bathWidth = ctx.measureText(`-`).width;
         drawText(ctx, `${money01}`, 669 - bathWidth - 55, 85, 36, 'SFThonburiSemiBold', '#4d90c4', 'right', 40, 3, 0, 0, 1250, -1.5);
-
-
         drawText(ctx, `เงินโอนเข้า`, 669,145,30, 'SFThonburiRegular', '#596163', 'right', 1.5, 3, 0, 0, 1250,0);
         drawText(ctx, `${senderaccount}`, 669,207,27, 'SFThonburiSemiBold', '#000000', 'right', 1.5, 3, 0, 0, 1250,-0.25);
         drawText(ctx, `${bank1} ${receiveraccount}`, 669,271.5,27, 'SFThonburiSemiBold', '#000000', 'right', 1.5, 3, 0, 0, 1250,-0.25);
-
-
-
-
+        
         drawText(ctx, `บาท`, 669, 335.4, 30, 'SFThonburiRegular', '#596163', 'right', 40, 3, 0, 0, 1250, 0);
         const bath1Width = ctx.measureText(`-`).width;
         drawText(ctx, `${money02}`, 669 - bath1Width - 55, 335.4, 30, 'SFThonburiRegular', '#596163', 'right', 40, 3, 0, 0, 1250, -1.5);
-
-
         drawText(ctx, `${formattedDate} ${formattedTime}`, 669, 399,30, 'SFThonburiRegular', '#596163', 'right', 40, 3, 0, 0, 1250,-0.25);
 
         if (qrCodeImage) {
-            ctx.drawImage(qrCodeImage, 0, 130.3, 555, 951); 
+            ctx.drawImage(qrCodeImage, 0, 130.3, 555, 951);
         }
     };
 }
@@ -173,8 +159,8 @@ function drawText(ctx, text, x, y, fontSize, fontFamily, color, align, lineHeigh
     ctx.font = `${fontSize}px ${fontFamily}`;
     ctx.fillStyle = color;
     ctx.textAlign = 'left';
-    ctx.shadowColor = shadowColor;
-    ctx.shadowBlur = shadowBlur;
+    ctx.shadowColor = shadowColor || 'transparent';
+    ctx.shadowBlur = shadowBlur || 0;
 
     const paragraphs = text.split('<br>');
     let currentY = y;
@@ -239,14 +225,20 @@ function drawTextLine(ctx, text, x, y, letterSpacing) {
     });
 }
 
-function downloadImage() {
+window.downloadImage = function() {
     const canvas = document.getElementById('canvas');
+    if(!canvas) return;
     const link = document.createElement('a');
     link.href = canvas.toDataURL('image/png');
     link.download = 'canvas_image.png';
     link.click();
 }
-document.getElementById('generate').addEventListener('click', updateDisplay);
+
+// ผูกอีเวนต์แบบกัน Error
+const genBtn = document.getElementById('generate');
+if(genBtn) {
+    genBtn.addEventListener('click', updateDisplay);
+}
 
 function drawImage(ctx, imageUrl, x, y, width, height) {
     const image = new Image();
@@ -255,6 +247,3 @@ function drawImage(ctx, imageUrl, x, y, width, height) {
         ctx.drawImage(image, x, y, width, height);
     };
 }
-
-
-
