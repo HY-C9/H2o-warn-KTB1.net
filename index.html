@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เงินเข้า กรุงไทย ( 2 ) - Premium System</title>
+    <title>เงินเข้า กรุงไทย(2)</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -67,7 +67,7 @@
         
         .holo-display-wrapper { position: sticky; top: 15px; display: flex; justify-content: center; align-items: flex-start; height: calc(100vh - 40px); perspective: 1000px; padding-top: 10px;}
         .holo-card { width: 100%; max-width: 550px; background: rgba(255, 255, 255, 0.02); border-radius: 20px; padding: 12px; box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.1); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: relative; }
-        .holo-screen { width: 100%; background: #000; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); display: flex; justify-content: center; align-items: center; }
+        .holo-screen { width: 100%; border-radius: 8px; overflow: hidden; display: flex; justify-content: center; align-items: center; }
         
         #canvas { width: 100%; height: auto; max-height: 85vh; object-fit: contain; display: block; margin: 0 auto; }
     </style>
@@ -97,7 +97,7 @@
       <a href="https://hy-c9.github.io/H2o-warn-KTB2.net" class="sidebar-link"><img src="assets/image/logo1/p-kt.png" class="sidebar-icon-img"> เงินเข้า กรุงไทย (3)</a>
       <a href="https://hy-c9.github.io/H2o-warn-KTB3.net" class="sidebar-link"><img src="assets/image/logo1/p-kt.png" class="sidebar-icon-img"> เงินเข้า กรุงไทย (4)</a>
       <a href="https://hy-c9.github.io/H2o-warn-KTB4.net" class="sidebar-link"><img src="assets/image/logo1/p-kt.png" class="sidebar-icon-img"> เงินเข้า กรุงไทย (5)</a>
-    
+      
       <a href="https://hy-c9.github.io/H2o-warn-SCB.net" class="sidebar-link"><img src="assets/image/logo1/p-scb.png" class="sidebar-icon-img"> เงินเข้า ไทยพาณิชย์ (1)</a>
       <a href="https://hy-c9.github.io/H2o-warn-SCB1.net" class="sidebar-link"><img src="assets/image/logo1/p-scb.png" class="sidebar-icon-img"> เงินเข้า ไทยพาณิชย์ (2)</a>
       <a href="https://hy-c9.github.io/H2o-warn-SCB2.net" class="sidebar-link"><img src="assets/image/logo1/p-scb.png" class="sidebar-icon-img"> เงินเข้า ไทยพาณิชย์ (3)</a>
@@ -127,11 +127,11 @@
       <a href="#" class="btn btn-outline-danger btn-sm w-100 rounded-pill mb-2 py-2 fw-medium d-flex justify-content-center align-items-center">
         <i class="bi bi-headset me-1"></i> ติดต่อผู้ดูแลระบบ
       </a>
-      <a href="#" onclick="window.logoutApp()" class="btn btn-theme-super btn-sm w-100 rounded-pill py-2 fw-medium d-flex justify-content-center align-items-center">
+      <a href="#" onclick="window.logoutApp()" class="btn btn-danger btn-sm w-100 rounded-pill py-2 fw-medium d-flex justify-content-center align-items-center">
         <i class="bi bi-box-arrow-right me-1"></i> ออกจากระบบ
       </a>
     </div>
-</aside>
+  </aside>
 
   <div class="slip-main">
     <nav class="navbar navbar-expand-lg slip-navbar d-flex justify-content-between align-items-center">
@@ -142,15 +142,15 @@
       </div>
       
       <div class="d-flex align-items-center gap-3">
-        <div class="d-none d-md-flex align-items-center" style="background: var(--item-bg); border: 1px solid var(--card-border); border-radius: 50rem; padding: 6px 16px; gap: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        <div class="d-none d-md-flex align-items-center" style="background: rgba(0,0,0,0.2); border: 1px solid var(--card-border); border-radius: 50rem; padding: 6px 16px; gap: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
             <i class="bi bi-hourglass-split" style="font-size: 1.2rem; color: #f59e0b;"></i>
             <div class="d-flex flex-column text-start" style="line-height: 1.1;">
                 <span style="font-size: 0.7rem; color: var(--text-muted);">เวลาใช้งานคงเหลือ</span>
-                <span class="fw-bold" id="timeLeftDisplay" style="font-size: 0.85rem; color: var(--text-main);">ทดสอบ VS Code</span>
+                <span class="fw-bold" id="timeLeftDisplay" style="font-size: 0.85rem; color: var(--text-main);">กำลังโหลด...</span>
             </div>
         </div>
-
-    <div class="container-fluid p-0">
+      </div>
+    </nav> <div class="container-fluid p-0">
       <div class="row g-2">
         
         <div class="col-lg-5">
@@ -159,7 +159,7 @@
                 <div class="form-section-title"><i class="bi bi-clock"></i> ตั้งค่าเวลาแจ้งเตือน</div>
                 <div class="row g-2 mb-2">
                     <div class="col-12">
-                        <label for="datetime_plus_one" class="form-label">เวลาแจ้งเตือน</label>
+                        <label for="datetime_plus_one" class="form-label">เวลาแจ้งเตือนหน้าจอ</label>
                         <input type="time" class="form-control" id="datetime_plus_one" required oninput="if(window.updateDisplay) window.updateDisplay();">
                     </div>
                 </div>
@@ -187,7 +187,7 @@
                 <div class="form-section-title"><i class="bi bi-person-vcard"></i> ข้อมูลบัญชี</div>
                 <div class="row g-2 mb-2">
                     <div class="col-12">
-                        <label for="senderaccount" class="form-label">เข้าบัญชี</label>
+                        <label for="senderaccount" class="form-label">เข้าบัญชี (บัญชีของเรา)</label>
                         <input type="text" class="form-control" id="senderaccount" name="senderaccount" value="XX8753" oninput="if(window.updateDisplay) window.updateDisplay();">
                     </div>
                     <div class="col-12">
@@ -284,7 +284,6 @@
         if (!user) {
             window.location.replace('https://hy-c9.github.io/Slip-H2o-login.net/');
         } else {
-
             const emailElem = document.getElementById('userEmailDisplay');
             if (emailElem) emailElem.innerText = user.email;
 
