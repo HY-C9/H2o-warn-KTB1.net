@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เงินเข้า กรุงไทย(2)</title>
+    <title>เงินเข้า 2 ยอด กสิกรไทย</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="icon" href="assets/image/logo1/p-kt.png" type="image/png">
+    <link rel="icon" href="assets/image/logo1/p-kbank.png" type="image/png">
     
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
     <meta http-equiv="Pragma" content="no-cache"/>
@@ -24,9 +24,9 @@
             --text-main: #ffffff; 
             --text-muted: #cbd5e1;
             
-            --ktb-primary: #1ba5e1; 
-            --ktb-secondary: #0098d2; 
-            --ktb-hover: #1282b5;
+            --kbank-primary: #00a950; 
+            --kbank-secondary: #00c35c; 
+            --kbank-hover: #008c42;
             
             --input-bg: rgba(0, 0, 0, 0.25); 
             --shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
@@ -55,28 +55,28 @@
         .slip-main { flex-grow: 1; overflow-y: auto; padding: 12px 20px; }
         
         .sidebar-brand img { max-width: 120px; margin-bottom: 10px; width: 100%; object-fit: contain;}
-        .sidebar-category { font-size: 0.7rem; font-weight: 600; color: var(--ktb-secondary); letter-spacing: 0.5px; padding-left: 12px; margin-top: 10px; margin-bottom: 5px; text-transform: uppercase; }
+        .sidebar-category { font-size: 0.7rem; font-weight: 600; color: var(--kbank-secondary); letter-spacing: 0.5px; padding-left: 12px; margin-top: 10px; margin-bottom: 5px; text-transform: uppercase; }
         .sidebar-menu { display: flex; flex-direction: column; gap: 2px; }
         .sidebar-link { display: flex !important; flex-direction: row !important; align-items: center !important; gap: 10px !important; color: var(--text-muted); text-decoration: none; padding: 6px 12px; border-radius: 8px; font-weight: 500; font-size: 0.8rem; transition: all 0.3s ease; }
         
-        .sidebar-link:hover, .sidebar-link.active { background: var(--ktb-primary); color: #fff; transform: translateX(4px); }
+        .sidebar-link:hover, .sidebar-link.active { background: var(--kbank-primary); color: #fff; transform: translateX(4px); }
         .sidebar-icon-img { width: 16px !important; height: 16px !important; object-fit: contain !important; border-radius: 0 !important; }
         
         .slip-navbar { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; backdrop-filter: blur(20px); padding: 6px 15px; margin-bottom: 12px; }
         
         .form-section-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 10px; padding: 10px 12px; margin-bottom: 10px; backdrop-filter: blur(20px); box-shadow: var(--shadow); }
         
-        .form-section-title { font-size: 0.85rem; font-weight: 600; color: var(--ktb-secondary); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; border-bottom: 1px dashed var(--card-border); padding-bottom: 4px; }
+        .form-section-title { font-size: 0.85rem; font-weight: 600; color: var(--kbank-secondary); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; border-bottom: 1px dashed var(--card-border); padding-bottom: 4px; }
         .form-label { font-weight: 500; color: var(--text-main); font-size: 0.7rem; margin-bottom: 2px; display: block;}
         
         .form-control, .form-select { background-color: var(--input-bg); border: 1px solid var(--card-border); color: var(--text-main); border-radius: 6px; padding: 4px 8px; font-size: 0.75rem; transition: all 0.3s; width: 100%; height: 28px;}
-        .form-control:focus, .form-select:focus { background-color: var(--input-bg); border-color: var(--ktb-primary); box-shadow: 0 0 0 2px rgba(27, 165, 225, 0.3); color: var(--text-main); }
+        .form-control:focus, .form-select:focus { background-color: var(--input-bg); border-color: var(--kbank-primary); box-shadow: 0 0 0 2px rgba(27, 165, 225, 0.3); color: var(--text-main); }
         .form-select option { background-color: #162238; color: #ffffff; }
         body.theme-pastel .form-select option { background-color: #ffffff; color: #000000; }
         ::placeholder { color: var(--text-muted); opacity: 0.7; font-weight: 400;}
         
-        .btn-bank-main { background: var(--ktb-primary); color: white; padding: 8px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; border: none; transition: all 0.3s; width: 100%; }
-        .btn-bank-main:hover { background: var(--ktb-hover); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(27, 165, 225, 0.4); color: white;}
+        .btn-bank-main { background: var(--kbank-primary); color: white; padding: 8px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; border: none; transition: all 0.3s; width: 100%; }
+        .btn-bank-main:hover { background: var(--kbank-hover); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(27, 165, 225, 0.4); color: white;}
         
         .btn-theme-super { background: #ffffff; color: #0f172a; border: 2px solid #ffffff; box-shadow: 0 4px 15px rgba(255,255,255,0.2); transition: all 0.3s ease; font-size: 0.75rem;}
         .btn-theme-super:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,255,255,0.4); background: #f8fafc;}
@@ -105,13 +105,13 @@
       <div class="sidebar-category">รายการแจ้งเตือนเงินเข้า</div>
       
       <a href="https://hy-c9.github.io/H2o-warn-KBANK.net" class="sidebar-link"><img src="assets/image/logo1/p-kbank.png" class="sidebar-icon-img"> เงินเข้า กสิกร (1)</a>
-      <a href="https://hy-c9.github.io/H2o-warn-KBANK1.net" class="sidebar-link"><img src="assets/image/logo1/p-kbank.png" class="sidebar-icon-img"> เงินเข้า กสิกร (2)</a>
+      <a href="https://hy-c9.github.io/H2o-warn-KBANK1.net" class="sidebar-link active"><img src="assets/image/logo1/p-kbank.png" class="sidebar-icon-img"> เงินเข้า กสิกร (2)</a>
       <a href="https://hy-c9.github.io/H2o-warn-KBANK2.net" class="sidebar-link"><img src="assets/image/logo1/p-kbank.png" class="sidebar-icon-img"> เงินเข้า กสิกร (3)</a>
       <a href="https://hy-c9.github.io/H2o-warn-KBANK3.net" class="sidebar-link"><img src="assets/image/logo1/p-kbank.png" class="sidebar-icon-img"> เงินเข้า กสิกร (4)</a>
       <a href="https://hy-c9.github.io/H2o-warn-KBANK4.net" class="sidebar-link"><img src="assets/image/logo1/p-kbank.png" class="sidebar-icon-img"> KBank Live (เข้า/ออก)</a>
       
       <a href="https://hy-c9.github.io/H2o-warn-KTB.net" class="sidebar-link"><img src="assets/image/logo1/p-kt.png" class="sidebar-icon-img"> เงินเข้า กรุงไทย (1)</a>
-      <a href="https://hy-c9.github.io/H2o-warn-KTB1.net" class="sidebar-link active"><img src="assets/image/logo1/p-kt.png" class="sidebar-icon-img"> เงินเข้า กรุงไทย (2)</a>
+      <a href="https://hy-c9.github.io/H2o-warn-KTB1.net" class="sidebar-link"><img src="assets/image/logo1/p-kt.png" class="sidebar-icon-img"> เงินเข้า กรุงไทย (2)</a>
       <a href="https://hy-c9.github.io/H2o-warn-KTB2.net" class="sidebar-link"><img src="assets/image/logo1/p-kt.png" class="sidebar-icon-img"> เงินเข้า กรุงไทย (3)</a>
       <a href="https://hy-c9.github.io/H2o-warn-KTB3.net" class="sidebar-link"><img src="assets/image/logo1/p-kt.png" class="sidebar-icon-img"> เงินเข้า กรุงไทย (4)</a>
       <a href="https://hy-c9.github.io/H2o-warn-KTB4.net" class="sidebar-link"><img src="assets/image/logo1/p-kt.png" class="sidebar-icon-img"> เงินเข้า กรุงไทย (5)</a>
@@ -145,7 +145,7 @@
       <a href="#" class="btn btn-outline-danger btn-sm w-100 rounded-pill mb-2 py-2 fw-medium d-flex justify-content-center align-items-center">
         <i class="bi bi-headset me-1"></i> ติดต่อผู้ดูแลระบบ
       </a>
-      <a href="#" onclick="window.logoutApp()" class="btn btn-danger btn-sm w-100 rounded-pill py-2 fw-medium d-flex justify-content-center align-items-center">
+      <a href="#" onclick="window.logoutApp()" class="btn btn-theme-super btn-sm w-100 rounded-pill py-2 fw-medium d-flex justify-content-center align-items-center">
         <i class="bi bi-box-arrow-right me-1"></i> ออกจากระบบ
       </a>
     </div>
@@ -179,6 +179,21 @@
         
         <div class="col-lg-5">
             
+            <div class="d-flex justify-content-between align-items-center mb-2 px-1">
+                <div class="text-warning fw-medium" style="font-size: 0.85rem;"><i class="bi bi-lightning-charge-fill"></i> เมนูด่วน</div>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-sm btn-outline-danger py-1 px-2" style="font-size: 0.75rem;" onclick="clearForm()" title="ล้างค่าทั้งหมด">
+                        <i class="bi bi-trash"></i> ล้าง
+                    </button>
+                    <button class="btn btn-sm btn-outline-primary py-1 px-2" style="font-size: 0.75rem;" onclick="saveFavorite()" title="บันทึกรายการปัจจุบัน">
+                        <i class="bi bi-bookmark-plus"></i> บันทึกไว้
+                    </button>
+                    <button class="btn btn-sm btn-warning py-1 px-2 fw-bold text-dark" style="font-size: 0.75rem;" onclick="loadFavorite()" title="โหลดรายการที่บันทึกไว้">
+                        <i class="bi bi-star-fill"></i> ใช้รายการโปรด
+                    </button>
+                </div>
+            </div>
+
             <div class="form-section-card">
                 <div class="form-section-title"><i class="bi bi-clock"></i> ตั้งค่าเวลาแจ้งเตือน</div>
                 <div class="row g-2 mb-2">
@@ -302,6 +317,64 @@
             }
         });
     }
+
+    // --------------------------------------------------------
+    // ฟังก์ชัน: การจัดการ เมนูด่วน (Clear / Save / Load)
+    // --------------------------------------------------------
+    const STORAGE_KEY = 'slipFav_KBANK_IN_2'; // ตั้งคีย์แยกระบบเงินเข้ากสิกร (2)
+
+    window.clearForm = function() {
+        const now = new Date();
+        const timeStr = now.toTimeString().slice(0,5);
+        if(document.getElementById('datetime_plus_one')) document.getElementById('datetime_plus_one').value = timeStr;
+        
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        const localISO = now.toISOString().slice(0, 16);
+        if(document.getElementById('datetime')) document.getElementById('datetime').value = localISO;
+        
+        if(document.getElementById('money01')) document.getElementById('money01').value = '+1,924.00';
+        if(document.getElementById('money02')) document.getElementById('money02').value = '30,924.00';
+        
+        if(document.getElementById('senderaccount')) document.getElementById('senderaccount').value = 'XX8753';
+        if(document.getElementById('bank1')) document.getElementById('bank1').selectedIndex = 0; // KTB
+        if(document.getElementById('receiveraccount')) document.getElementById('receiveraccount').value = 'XX8881';
+        if(document.getElementById('receivername')) document.getElementById('receivername').value = '-----------';
+        
+        if(window.updateDisplay) window.updateDisplay();
+    };
+
+    window.saveFavorite = function() {
+        const favData = {
+            money01: document.getElementById('money01') ? document.getElementById('money01').value : '',
+            money02: document.getElementById('money02') ? document.getElementById('money02').value : '',
+            
+            sAcc: document.getElementById('senderaccount') ? document.getElementById('senderaccount').value : '',
+            bank1: document.getElementById('bank1') ? document.getElementById('bank1').value : '',
+            rAcc: document.getElementById('receiveraccount') ? document.getElementById('receiveraccount').value : '',
+            rName: document.getElementById('receivername') ? document.getElementById('receivername').value : ''
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(favData));
+        alert('⭐ บันทึกรายการนี้เป็น "รายการโปรด" เรียบร้อยแล้ว!');
+    };
+
+    window.loadFavorite = function() {
+        const savedStr = localStorage.getItem(STORAGE_KEY);
+        if (savedStr) {
+            const favData = JSON.parse(savedStr);
+            
+            if(favData.money01 !== undefined && document.getElementById('money01')) document.getElementById('money01').value = favData.money01;
+            if(favData.money02 !== undefined && document.getElementById('money02')) document.getElementById('money02').value = favData.money02;
+            
+            if(favData.sAcc !== undefined && document.getElementById('senderaccount')) document.getElementById('senderaccount').value = favData.sAcc;
+            if(favData.bank1 !== undefined && document.getElementById('bank1')) document.getElementById('bank1').value = favData.bank1;
+            if(favData.rAcc !== undefined && document.getElementById('receiveraccount')) document.getElementById('receiveraccount').value = favData.rAcc;
+            if(favData.rName !== undefined && document.getElementById('receivername')) document.getElementById('receivername').value = favData.rName;
+            
+            if(window.updateDisplay) window.updateDisplay();
+        } else {
+            alert('⚠️ คุณยังไม่ได้บันทึกรายการโปรดไว้');
+        }
+    };
 </script>
 
 <script src="js/slipktb2.js?v=1"></script> 
